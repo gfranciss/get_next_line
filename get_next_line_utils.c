@@ -6,7 +6,7 @@
 /*   By: gfrancis <gfrancis@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:47:23 by gfrancis          #+#    #+#             */
-/*   Updated: 2023/05/22 14:43:39 by gfrancis         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:32:30 by gfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,13 @@ char	*ft_strrchr(const char *s, int c)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t			final_size;
 	char			*string;
 	size_t			i;
 	size_t			j;
 
 	i = 0;
 	j = 0;
-	final_size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	string = (char *)malloc(final_size);
+	string = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!string)
 		return (NULL);
 	if (s1)
@@ -75,7 +73,7 @@ char	*ft_substr_divide(char *s, char *substr, int start, int len)
 	if (start > ft_strlen(s))
 	{
 		substr = malloc(sizeof(char));
-		if(!substr)
+		if (!substr)
 			return (NULL);
 		substr[0] = '\0';
 		return (substr);
@@ -84,9 +82,9 @@ char	*ft_substr_divide(char *s, char *substr, int start, int len)
 		substr = malloc(ft_strlen(s) - start + 1);
 	else
 		substr = malloc(len + 1);
-	if(!substr)
+	if (!substr)
 		free(substr);
-	return(substr);
+	return (substr);
 }
 
 char	*ft_substr(char *str, int start, int len, int do_free)
@@ -94,11 +92,10 @@ char	*ft_substr(char *str, int start, int len, int do_free)
 	char	*substr;
 	int		i;
 	int		j;
-	
+
 	substr = NULL;
 	i = -1;
 	j = 0;
-	
 	substr = ft_substr_divide(str, substr, start, len);
 	while (str[++i] != '\0')
 	{
@@ -106,7 +103,7 @@ char	*ft_substr(char *str, int start, int len, int do_free)
 			substr[j++] = str[i];
 	}
 	substr[j] = '\0';
-	if(do_free)
+	if (do_free)
 		free(str);
-	return(substr);
+	return (substr);
 }

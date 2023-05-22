@@ -6,7 +6,7 @@
 /*   By: gfrancis <gfrancis@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:46:38 by gfrancis          #+#    #+#             */
-/*   Updated: 2023/05/22 14:41:18 by gfrancis         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:30:06 by gfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ char	*ft_get_line(char *content)
 {
 	char	*line;
 	int		i;
-	
+
 	i = 0;
-	if(!ft_strlen(content))
+	if (!ft_strlen(content))
 	{
 		free(content);
 		return (NULL);
@@ -35,14 +35,14 @@ char	*ft_read_file(int fd, char *content)
 {
 	char	*line;
 	int		reader;
-	
+
 	line = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!line)
 		return (NULL);
 	reader = 1;
-	while(!ft_strrchr(content, '\n') && reader)
+	while (!ft_strrchr(content, '\n') && reader)
 	{
-		reader = read(fd, line , BUFFER_SIZE);
+		reader = read(fd, line, BUFFER_SIZE);
 		if (reader < 0)
 		{
 			free (line);
@@ -53,7 +53,7 @@ char	*ft_read_file(int fd, char *content)
 		content = ft_strjoin(content, line);
 	}
 	free(line);
-	return(content);
+	return (content);
 }
 
 char	*get_next_line(int fd)
@@ -62,15 +62,15 @@ char	*get_next_line(int fd)
 	char			*get_line;
 	int				content_len;
 	int				get_line_len;
-	
-	if(fd < 0 || BUFFER_SIZE <= 0)
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	content = ft_read_file(fd, content);
 	get_line = ft_get_line(content);
 	if (!get_line)
 	{
 		content = NULL;
-		return (NULL);	
+		return (NULL);
 	}
 	get_line_len = ft_strlen(get_line);
 	content_len = ft_strlen(content);
