@@ -6,7 +6,7 @@
 /*   By: gfrancis <gfrancis@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 09:43:29 by gfrancis          #+#    #+#             */
-/*   Updated: 2023/05/24 09:47:49 by gfrancis         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:45:25 by gfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ char	*ft_read_file(int fd, char *content)
 
 char	*get_next_line(int fd)
 {
-	static char		*content[1000];
+	static char		*content[FOPEN_MAX];
 	char			*get_line;
 	int				content_len;
 	int				get_line_len;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1000)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
 		return (NULL);
 	content[fd] = ft_read_file(fd, content[fd]);
 	get_line = ft_get_line(content[fd]);
