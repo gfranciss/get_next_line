@@ -6,7 +6,7 @@
 /*   By: gfrancis <gfrancis@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 09:40:15 by gfrancis          #+#    #+#             */
-/*   Updated: 2023/05/24 09:42:17 by gfrancis         ###   ########.fr       */
+/*   Updated: 2023/06/05 13:51:15 by gfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,14 @@ char	*ft_substr(char *str, int start, int len, int do_free)
 	int		j;
 
 	substr = NULL;
-	i = -1;
+	i = 0;
 	j = 0;
 	substr = ft_substr_divide(str, substr, start, len);
-	while (str[++i] != '\0')
+	while (str[i] != '\0')
 	{
 		if (i >= start && j < len)
 			substr[j++] = str[i];
+		i++;
 	}
 	substr[j] = '\0';
 	if (do_free)
